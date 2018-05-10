@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wf>
+	<parameters id="wf_acceptance">
+		<parameter key="s">
+			<value>22</value>
+		</parameter>
+		<parameter key="t">
+			<value>33</value>
+		</parameter>
+	</parameters>
+</wf>

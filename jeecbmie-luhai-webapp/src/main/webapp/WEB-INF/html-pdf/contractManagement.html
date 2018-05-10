@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Title</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<table width="100%" class="tableClass" style="margin-bottom: 0px;">
+		<tr>
+			<td colspan="9" style="font-size: 24px; font-weight: bold; text-align: center; padding: 10px;">合同签订审批表</td>
+		</tr>
+		<tr>
+			<td colspan="9" align="right">
+				合同编号：${contractNo}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="9" align="center">
+				<font style="font-weight: bold;">申请部门：</font>${createrDept}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">申请人：</font>${createrName}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">业务经办人：</font>${businessManager}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">申请日期：</font>${createDate?string("yyyy-MM-dd") }&nbsp;&nbsp;&nbsp;&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="3" width="10%" style="border-right: 1px solid #95B8E7; font-weight: bold;">合同条款</td>
+			<td colspan="8">合同类型：${contractCategory}</td>
+		</tr>
+		<tr>
+			<td colspan="8">合同金额：<#if amount??>${amount?string(',###.00')}￥</#if></td>
+		</tr>
+		<tr>
+			<td colspan="8">合同期限：<#if contracTermt??>${contracTermt?string("yyyy年MM月dd日") }</#if>至<#if contracTermtEnd??>${contracTermtEnd?string("yyyy年MM月dd日") }</#if></td>
+		</tr>
+		<tr>
+			<td rowspan="2" style="border-right: 1px solid #95B8E7; font-weight: bold;">对方情况</td>
+			<td colspan="8">单位全称：${signAffi}</td>
+		</tr>
+		<tr>
+			<td colspan="8">联系方式：${phone}&nbsp;&nbsp;&nbsp;&nbsp;地址：${address}</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">主要内容</td>
+			<td colspan="8">${mainContent}</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">合同审查</td>
+			<td colspan="8">
+				<table width="100%" class="listTabClass">
+					<tr>
+						<th width="5%">序号</th>
+						<th width="15%">审批节点</th>
+						<th width="10%">处理人</th>
+						<th width="10%">传阅人</th>
+						<th width="15%">任务开始时间</th>
+						<th width="15%">任务结束时间</th>
+						<th width="10%">耗时</th>
+						<th width="20%">审批意见</th>
+					</tr>
+					<#list traceList as item>
+					<tr>
+						<td>${item_index + 1}</td>
+						<td>${item.name}</td>
+						<td>${item.assignee}</td>
+						<td>${item.passUsers}</td>
+						<td>${item.startTime}</td>
+						<td>${item.endTime}</td>
+						<td>${item.distanceTimes}</td>
+						<td>${item.comments}</td>
+					</tr>
+					</#list>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2" style="border-right: 1px solid #95B8E7; font-weight: bold;">归档</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">复印存档份数：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">交件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">接件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">日期：</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">原件存档份数：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">交件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">接件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">日期：</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">送达情况</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">财务部：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">签约日期：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">合同部门：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">签收日期：</td>
+		</tr>
+	</table>
+</body>
+</html>

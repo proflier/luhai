@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faultconfig showtype="alert">
+	<fault>
+		<code>1032</code>
+		<description>会话超时，返回应用首页！</description>
+		<nextaction>res:page/login.xhtml</nextaction>
+	</fault>
+	<fault>
+		<code>7001</code>
+		<description>连接服务器失败，请联系管理员！</description>
+		<nextaction>res:page/login.xhtml</nextaction>
+	</fault>
+	<fault>
+		<code>5017</code>
+		<description>缺少相应的应用处理页面！</description>
+		<nextaction>res:page/login.xhtml</nextaction>
+	</fault>
+	<fault>
+		<code>5007</code>
+		<description>请求业务系统失败！</description>
+		<nextaction>res:page/login.xhtml</nextaction>
+	</fault>
+</faultconfig>

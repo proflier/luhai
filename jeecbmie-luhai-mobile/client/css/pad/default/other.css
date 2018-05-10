@@ -1,0 +1,15 @@
+.tableClass {
+	width:100%;
+	border-size:1px;
+	border-color:#A0C8E8;
+}
+.label-left{
+	color:#0080FF;
+	width:30%;
+	height:30px;
+	margin:8;
+}
+.label-right{
+	width:70%;
+	margin:8 0;
+}

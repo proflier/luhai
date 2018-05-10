@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<link rel="stylesheet" type="text/css" href="res:css/other.css"/>
+		<script type="text/javascript" src="res:script/ued.base.js"></script>
+		<script type="text/javascript" src="res:script/other.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+
+			function exitsys() {
+				//设置提交地址
+				var url = "http://logout_ajax.jsp";
+				//设置提交方式
+				var method = "GET";
+				//设置发送数据
+				var data = "";
+				//设置自定义http头 json格式
+				var requestHeader = '';
+				//设置进度条显示
+				var isShowProgress = false;
+				//构建Ajax对象
+				$ajax(url, method, data, getout, failFunction, requestHeader, isShowProgress);
+			}
+
+			function getout(data) {
+				if (data.status == 200) {
+					document.cache.setCache("autoLogin", false);//关闭自动登录
+					ClientUtil.execScript("script:reloadapp");
+				}
+				progressBar.cancel();
+			}
+			
+			var todoNum = 0;
+
+			function todoCount() {
+				//设置提交地址
+				var url = "http://luhai/mobile/taskTodo/count";
+				//设置提交方式
+				var method = "GET";
+				//设置发送数据
+				var data = "";
+				//设置自定义http头 json格式
+				var requestHeader = {};
+				//设置进度条显示
+				var isShowProgress = false;
+				//构建Ajax对象
+				$ajax(url, method, data, todoCountFunction, failFunction, requestHeader, isShowProgress);
+			}
+
+			function todoCountFunction(response) {
+				if (response.status == 200) {
+					if (response.responseText == "responseMobileSessionTimeOut") {
+						ClientUtil.execScript("script:reloadapp");
+						return;
+					}
+					
+					todoNum = Number(response.responseText);
+					indexTotal();
+					
+					window.beignPreferenceChange();/*开始批量刷新*/
+					if ($("mainGrid") != null) {
+						var cell = $("mainGrid").getCellByIndex(0);
+						if (response.responseText == 0) {
+							cell.isShowCircleTip = false;
+						} else {
+							cell.isShowCircleTip = true;
+							cell.circleTipNumber = response.responseText;
+						}
+					} else {
+						$("page1").refresh();
+					}
+					window.endPreferenceChange();/*结束批量刷新*/
+				}
+				progressBar.cancel();
+			}
+			
+			function showLeft() {
+				var groupObj = ClientUtil.getHtmlGroupById("mainGroup");
+				groupObj.showLeftPage();
+			}
+			
+			function changeMenu(title, index, pageID) {
+				$("mainTitlebar").title = title;
+				$("menubarID").selectedIndex = index;
+				$(pageID).show();
+				
+				if (index == 0) {
+					todoCount();
+				}
+			}
+			
+			function indexTotal() {
+				var indexMenu = $("menubarID").getMenu("indexMenu");
+				var total = todoNum;
+				if (total == 0) {
+					indexMenu.isShowCircleTip = false;
+				} else {
+					indexMenu.isShowCircleTip = true;
+					indexMenu.circleTipNumber = total;
+				}
+			}
+			
+			function changeDays(days) {
+				//设置提交地址
+				var url = "http://luhai/mobile/main/active/" + days;
+				//设置提交方式
+				var method = "GET";
+				//设置发送数据
+				var data = "";
+				//设置自定义http头 json格式
+				var requestHeader = {};
+				//设置进度条显示
+				var isShowProgress = false;
+				//构建Ajax对象
+				$ajax(url, method, data, changeDaysFunction, failFunction, requestHeader, isShowProgress);
+			}
+			
+			function changeDaysFunction(response) {
+				if (response.status == 200) {
+					if (response.responseText == "responseMobileSessionTimeOut") {
+						ClientUtil.execScript("script:reloadapp");
+						return;
+					}
+					document.getElementById('activeDiv').innerHTML = response.responseText;
+				}
+				progressBar.cancel();
+			}
+
+			]]>
+		</script>
+	</head>
+	<header>
+		<titlebar id="mainTitlebar" title="主页" iconhref="showLeft();" icon="res:image/contact/titlebar/list.png" clickicon="res:image/contact/titlebar/list_click.png" riconhref="confirm('确定退出系统？', exitsys)" ricon="res:image/contact/titlebar/user.png" clickricon="res:image/contact/exit.png"/>
+	</header>
+	<body>
+		<page id="page1" onstart="changeMenu('主页', 0, 'page1');" url="http://luhai/mobile/main/index"/>
+		<page id="page2" onstart="changeMenu('通讯录', 1, 'page2');" url="http://luhai/mobile/main/addr"/>
+		<page id="page3" onstart="changeMenu('我的', 2, 'page3');" url="http://luhai/mobile/main/user"/>
+	</body>
+	<footer>
+		<menubar showtype="mix" id="menubarID" class="menubar">
+			<menu id="indexMenu" text="主页" icon="res:image/menubar/home.png" currenticon="res:image/menubar/home_select.png" href="changeMenu('主页', 0, 'page1');"/>
+			<menu id="addrMenu" text="通讯录" icon="res:image/menubar/addr.png" currenticon="res:image/menubar/addr_select.png" href="changeMenu('通讯录', 1, 'page2');"/>
+			<menu id="userMenu" text="我的" icon="res:image/menubar/user.png" currenticon="res:image/menubar/user_select.png" href="changeMenu('我的', 2, 'page3');"/>
+		</menubar>
+	</footer>
+</html>

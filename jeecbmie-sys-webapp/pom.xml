@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cbmie.jeecbmie</groupId>
+    <artifactId>jeecbmie-parent</artifactId>
+    <version>0.1.RELEASE</version>
+  </parent>
+  <artifactId>jeecbmie-sys-webapp</artifactId>
+  <packaging>war</packaging>
+  <name>jeecbmie-sys-webapp Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+    		<groupId>com.cbmie.jeecbmie</groupId>
+    		<artifactId>jeecbmie-base-common</artifactId>
+    	</dependency>
+		<dependency>
+    		<groupId>com.cbmie.jeecbmie</groupId>
+    		<artifactId>jeecbmie-act-core</artifactId>
+    	</dependency>
+		<dependency>
+    		<groupId>com.cbmie.jeecbmie</groupId>
+    		<artifactId>jeecbmie-sys-core</artifactId>
+    	</dependency>    	
+	</dependencies>
+
+	<!-- 打包时把resources下包内的XML配置文件也包含 -->
+	<build>
+		<finalName>jeecbmie-sys-webapp</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+					<include>**/*.html</include>
+					<include>**/*.json</include>
+					<include>**/*.ini</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<!-- 
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		 -->
+	</build>
+</project>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Title</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<table width="100%" class="listTabClass">
+		<tr>
+			<td colspan="8" align="center"
+				style="font-size: 16px; padding: 5px; font-weight: bold; letter-spacing: 4px;">办理记录</td>
+		</tr>
+		<tr>
+			<th width="5%">序号</th>
+			<th width="15%">审批节点</th>
+			<th width="10%">处理人</th>
+			<th width="10%">传阅人</th>
+			<th width="15%">任务开始时间</th>
+			<th width="15%">任务结束时间</th>
+			<th width="10%">耗时</th>
+			<th width="20%">审批意见</th>
+		</tr>
+		<#list traceList as item>
+		<tr>
+			<td>${item_index + 1}</td>
+			<td>${item.name}</td>
+			<td>${item.assignee}</td>
+			<td>${item.passUsers}</td>
+			<td>${item.startTime}</td>
+			<td>${item.endTime}</td>
+			<td>${item.distanceTimes}</td>
+			<td>${item.comments}</td>
+		</tr>
+		</#list>
+	</table>
+</body>
+</html>

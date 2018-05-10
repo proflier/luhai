@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<maxml version="2.0" xmlns="http://www.nj.fiberhome.com.cn/map"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.nj.fiberhome.com.cn/map maxml-2.0.xsd">
+	<config>
+		<!-- 数据源 -->
+		<customparam name="jdbc_ip" value="192.168.2.105" />
+		<customparam name="jdbc_dbname" value="luhai_pro" />
+		<customparam name="jdbc_username" value="luhai" />
+		<customparam name="jdbc_password" value="luhai" />
+		<database id="db_1" user="${jdbc_username}" password="${jdbc_password}" maxconn="10" minconn="2" defconn="5" dbtype="mysql" ip="${jdbc_ip}" dbname="${jdbc_dbname}" port="3306"/>
+		<!-- 用于设置对数据源进行相关操作时是否进行html转xml规范化处理 -->
+		<htmlformat wellformat="true" />
+		<!-- 有状态会话，表示会话有登录状态，当会话超时时会提示会话超时并跳到应用插件首页面
+		<session type="stateful" /> -->
+		<!-- 无状态会话，表示会话是不需要登录状态的，当会话超时时不会提示会话超时且不会自动跳转到应用首页面 -->
+		<session type="stateless"/>
+		<!-- 会话过期时间（分钟）
+		<apptimeout appexpireminute="15" /> -->
+		<!-- 第三方服务地址 -->
+		<domain address="192.168.1.161:8081/luhai" name="luhai" />
+	</config>
+	<services>
+		<!-- http-service用于发布http接口 -->
+		<http-service>
+			<forward pattern="/push_app.do" path="push_app.jsp"></forward>
+			<forward pattern="/push_notify.do" path="push_notify.jsp"></forward>
+		</http-service>
+	</services>
+</maxml>

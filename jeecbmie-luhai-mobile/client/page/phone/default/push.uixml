@@ -1,0 +1,56 @@
+<!-- ExMobi UIXML(XHTML)文件 -->
+<html>
+	<head>
+		<meta content="charset=utf-8"/>
+		<title show="false"/>
+		<script type="text/javascript" src="res:script/other.js"></script>
+		<script type="text/javascript">
+			<![CDATA[
+			function init() {
+				var username = window.getPushParameter("username");
+				var title = window.getPushParameter("title");
+				var taskId = window.getPushParameter("taskId");
+				var processInstanceId = window.getPushParameter("processInstanceId");
+				var businessKey = window.getPushParameter("businessKey");
+				var key = window.getPushParameter("key");
+				
+				document.getElementById("summary").innerHTML = title;
+				
+				//设置提交地址
+				var url = "http://luhai/mobile/taskTodo/detail";
+				//设置提交方式
+				var method = "POST";
+				//设置发送数据
+				var data = "taskId=" + taskId + "&processInstanceId=" + processInstanceId + "&businessKey=" + businessKey + "&key=" + key + "&status=" + encodeURI("待签收") + "&loginName=" + username;
+				//设置自定义http头 json格式
+				var requestHeader = {};
+				//设置进度条显示
+				var isShowProgress = false;
+				//构建Ajax对象
+				var ajax = new Ajax(url, method, data, successFunction, failFunction, requestHeader, isShowProgress);
+				//发送请求
+				ajax.send();
+			}
+			
+			function successFunction(response) {
+				if (response.status == 200) {
+					if (response.responseText == "responseMobileSessionTimeOut") {
+						ClientUtil.execScript("script:reloadapp");
+						return;
+					}
+					window.close();
+					window.openData(response.responseText, true, false);
+				}
+			}
+			]]>
+		</script>
+
+	</head>
+	<header>
+		<titlebar title="正在加载......" iconhref="script:close" hidericon="true"/>
+	</header>
+	<body onload="init()">
+		<div id="summary">
+		</div>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+table.tableClass {
+	margin: 5px;
+	border-collapse: collapse;
+	border: 1px solid #95B8E7;
+	font-size:12px;
+}
+
+table.tableClass th {
+	font-weight: normal;
+	background-color: #eaf2ff;
+	padding: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #95B8E7;
+}
+
+table.tableClass td {
+	padding: 5px;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #95B8E7;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #95B8E7;
+}
+
+table.listTabClass {
+	margin: 5px;
+	border-collapse: collapse;
+	border: 1px solid #95B8E7;
+	font-size:12px;
+}
+
+table.listTabClass th {
+	text-align: left;
+	font-weight: normal;
+	background-color: #eaf2ff;
+	padding: 5px;
+	padding-left: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #95B8E7;
+}
+
+table.listTabClass td {
+	padding: 5px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #95B8E7;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #95B8E7;
+}

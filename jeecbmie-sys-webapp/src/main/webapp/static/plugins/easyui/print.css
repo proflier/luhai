@@ -1,0 +1,9 @@
+
+
+table,table tr th, table tr td { border:1px solid #0094ff; }
+table { border-collapse: collapse; padding:2px;} 
+     
+table {
+    display: table;
+    border-color: grey;
+}   

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Title</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<table width="100%" class="tableClass">
+		<tr>
+			<td colspan="6" align="center" style="font-size: 16px; font-weight: bold; padding: 5px; letter-spacing: 4px; border-bottom-color: white;">付款申请单</td>
+		</tr>
+		<tr>
+			<td colspan="3" align="left" style="font-weight: bold; border-top-color: white;">
+				${interContractNo }
+			</td>
+			<td colspan="3" align="right" style="font-weight: bold; border-top-color: white;">
+				付款单号:${confirmNo }
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="3">收款单位</td>
+			<th>名称</th>
+			<td colspan="3">
+				${receiveUnitName}
+			</td>
+			<td width="20%" rowspan="8" align="left" style="border-left: 1px solid #95B8E7;">
+				付款说明：<br/>
+				${remarks }
+			</td>
+		</tr>
+		<tr>
+			<th>银行</th>
+			<td colspan="3">
+				${remitBank}
+			</td>
+		</tr>
+		<tr>
+			<th>账号</th>
+			<td colspan="3">
+				${remitAccount }
+			</td>
+		</tr>
+		<tr>
+			<td rowspan='2'>付款金额</td>
+			<th>小写</th>
+			<td>
+				<#if payMoneyXiao??>${payMoneyXiao?string.number }</#if>
+			</td>
+			<th>
+				币种
+			</th>
+			<td>
+				${currency}
+			</td>
+		</tr>
+		<tr>
+			<th>大写</th>
+			<td colspan="3">
+				${payMoneyDa }
+			</td>
+		</tr>
+		<tr>
+			<td rowspan='3'>付款信息</td>
+			<th>付款内容</th>
+			<td>
+				${payContent}
+			</td>
+			<th>付款方式</th>
+			<td>
+				${payType}
+			</td>
+		</tr>
+		<tr>
+			<th>付款单位</th>
+			<td colspan="3">
+				${payUnit}
+			</td>
+		</tr>
+		<tr>
+			<th>业务经办人:</th>
+			<td >
+				${businessManager}
+			</td>
+			<th>业务经办部门:</th>
+			<td >
+				${businessManagerDept}
+			</td>
+		</tr>
+		<tr>
+			<td align="right" height="40px;">制单人:</td>
+			<td align="left">
+				${createrName}
+			</td>
+			<td align="right">制单部门:</td>
+			<td align="left">
+				${createrDept}
+			</td>
+			<td align="right" colspan="2">确认日期:</td>
+			<td align="left" colspan="3">
+				<#if confirmDate??>${confirmDate?string("yyyy-MM-dd") }</#if>
+			</td>
+		</tr>
+	</table>
+	<table width="100%" class="listTabClass">
+		<tr>
+			<td colspan="5" align="center" style="font-size: 16px; padding: 5px; font-weight: bold; letter-spacing: 4px;">费用分摊</td>
+		</tr>
+		<tr>
+			<th>序号</th>
+			<th>费用类别</th>
+			<th>分摊</th>
+			<th>摘要</th>
+			<th>分摊金额</th>
+		</tr>
+		<#list paymentConfirmChildList as item>
+		<tr>
+			<td>
+				${item_index + 1}
+			</td>
+			<td>
+				${item.feeCategory}
+			</td>
+			<td>
+				${item.paymentType}
+			</td>
+			<td>
+				${item.code}
+			</td>
+			<td>
+				<#if item.shareAmount??>${item.shareAmount?string.number}</#if>
+			</td>
+		</tr>
+		</#list>
+	</table>
+	<#if processInstanceId??>
+		<#include "/trace.html">
+	</#if>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿header{
+	background-color:#2371af;
+}
+contextmenu{
+	option-background-color:#404549;
+	option-background-click-color:#2c2c2c;
+	option-background-current-color:#404549;
+	color:white;
+	click-color:white;
+	current-color:white;
+}
+/*顶部菜单*/
+.logo{
+	width:170;
+	height:70;
+	background-color:white;
+	background-opacity:0.3;
+	text-valign:middle;
+	text-align:center;
+}
+.tmenu{
+	width:80;
+	height:70;
+	font-size:16dp;
+	background-click-color:black;
+	text-align:center;
+	text-valign:middle;
+	color:white;
+	background-opacity:0.3;
+}
+.back{
+	width:70;
+	height:70;
+	background-color:#194f7b;
+	background-click-color:#123756;
+	text-align:center;
+	text-valign:middle;
+	color:white;
+	align:right;
+}
+.shortcut{
+	width:170;
+	height:70;
+	background-color:black;
+	background-opacity:0.3;
+	text-align:center;
+	align:right;
+}

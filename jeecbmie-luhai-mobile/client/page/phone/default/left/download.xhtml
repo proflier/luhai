@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.nj.fiberhome.com.cn/exmobi.dtd">
+<html>
+	<head>
+		<title show="false"/>
+		<style type="text/css">
+		
+		</style>
+		<script type="text/javascript">
+		<![CDATA[
+			function init() {
+				var yArray = ClientUtil.getDownloadInfos(0);//已下载
+				var str = "<fileset hidetitle=\"true\">";
+				for (i = 0; i < yArray.length; i++) {
+					var downloadInfo = yArray[i];
+					str += "<item text=\"" + downloadInfo.fileName + "\" href=\"" + downloadInfo.url + "\" options=\"011\"/>";
+				}
+				str += "</fileset>";
+				document.getElementById("page2").innerHTML = str;
+				
+				var nArray = ClientUtil.getDownloadInfos(1);//正在下载
+				str = "<fileset hidetitle=\"true\">";
+				for (i = 0; i < nArray.length; i++) {
+					var downloadInfo = nArray[i];
+					str += "<item text=\"" + downloadInfo.fileName + "\" href=\"" + downloadInfo.url + "\" options=\"011\"/>";
+				}
+				str += "</fileset>";
+				document.getElementById("page1").innerHTML = str;
+			}
+			
+			function clear() {
+				if (ClientUtil.clearDownload()) {
+					init();
+				}
+			}
+		]]>
+		</script>
+	</head>
+	<header>
+		<titlebar title="下载管理" iconhref="script:close" riconhref="confirm('确认清空下载列表吗？', clear);" ricon="res:image/mail1/trash.png" clickricon="res:image/mail1/trash_click.png"/>
+		<tabbar tabtype="trapezia" col="2" showtype="text">
+			<tab icon="" text="正在下载" bindpage="page1"/>
+			<tab icon="" text="已下载" bindpage="page2"/>
+		</tabbar>
+	</header>
+	<body onload="init();">
+		<page id="page1">
+			
+		</page>
+		<page id="page2">
+			
+		</page>
+	</body>
+</html>

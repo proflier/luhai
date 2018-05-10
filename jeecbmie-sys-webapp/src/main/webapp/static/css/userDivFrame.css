@@ -1,0 +1,64 @@
+.divFrame {
+		margin-top:5px;
+		margin-left:2%;
+		width: 30%;
+		height:270px;
+		display: block;
+		float: left;
+		overflow:auto;
+		border:1px solid #95B8E7
+	}
+	#userShowDiv li {
+		width:120px;
+		list-style-type:none;
+	}
+	#userShowDiv li a{
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	#userShowDiv li span.keyperson{
+		line-height: 0;
+		width: 16px;
+		height: 16px;
+		display: inline-block;
+		vertical-align: middle;
+		border: 0 none;
+		cursor: pointer;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-image: url("../plugins/ztree/css/zTreeStyle/img/zTreeStandard.png");
+		background-position: -126px -64px;
+	}
+	#userShowDiv li span.nokeyperson{
+		line-height: 0;
+		width: 16px;
+		height: 16px;
+		display: inline-block;
+		vertical-align: middle;
+		border: 0 none;
+		cursor: pointer;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-image: url("../plugins/ztree/css/zTreeStyle/img/zTreeStandard.png");
+		background-position: -126px -80px;
+	}
+	#userShowDiv li span.del{
+		line-height: 0;
+		width: 15px;
+		height: 15px;
+		display: inline-block;
+		vertical-align: middle;
+		border: 0 none;
+		cursor: pointer;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-image: url("../plugins/ztree/css/zTreeStyle/img/zTreeStandard.png");
+		background-position: -110px -64px;
+	}
+	#userShowDiv li span.content{
+		width: 60px;
+		display: inline-block;
+	}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Title</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<table width="100%" class="tableClass" style="margin-bottom: 0px;">
+		<tr>
+			<td colspan="9" style="font-size: 24px; font-weight: bold; text-align: center; padding: 10px;">入库通知单</td>
+		</tr>
+		<tr>
+			<td colspan="5" align="left">
+				采购合同号：${purchaseContractNo}
+			</td>
+			<td colspan="4" align="right">
+				发货通知号：${noticeNo}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="left">
+				供货单位：${deliveryUnitView}
+			</td>
+			<td colspan="2" align="center">
+				交货方式：${deliveryModeView}
+			</td>
+			<td colspan="3" align="right">
+				帐套单位：${setUnitView}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="9" align="center">
+				<font style="font-weight: bold;">申请部门：</font>${createrDept}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">申请人：</font>${createrName}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">业务经办人：</font>${businessManager}&nbsp;&nbsp;&nbsp;&nbsp;
+				<font style="font-weight: bold;">申请日期：</font>${createDate?string("yyyy-MM-dd") }&nbsp;&nbsp;&nbsp;&nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">主要商品</td>
+			<td colspan="8">
+				<table width="100%" class="listTabClass">
+					<tr>
+						<th width="15%">商品名称</th>
+						<th width="20%">仓库名称</th>
+						<th width="10%">入库数量</th>
+						<th width="15%">CIQ数量</th>
+						<th width="15%">数量单位</th>
+						<th width="15%">运输方式</th>
+						<th width="20%">运输编号</th>
+					</tr>
+					<#list goodsList as goods>
+					<tr>
+						<td>${goods.goodsNameView}</td>
+						<td>${goods.warehouseNameView}</td>
+						<td>${goods.quantity}</td>
+						<td>${goods.quantityCIQ}</td>
+						<td>${goods.unitsView}</td>
+						<td>${goods.transportCategoryView}</td>
+						<td>${goods.shipNo}</td>
+					</tr>
+					</#list>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">合同审查</td>
+			<td colspan="8">
+				<table width="100%" class="listTabClass">
+					<tr>
+						<th width="5%">序号</th>
+						<th width="15%">审批节点</th>
+						<th width="10%">处理人</th>
+						<th width="10%">传阅人</th>
+						<th width="15%">任务开始时间</th>
+						<th width="15%">办理时间</th>
+						<th width="10%">耗时</th>
+						<th width="20%">审批意见</th>
+					</tr>
+					<#list traceList as item>
+					<tr>
+						<td>${item_index + 1}</td>
+						<td>${item.name}</td>
+						<td>${item.assignee}</td>
+						<td>${item.passUsers}</td>
+						<td>${item.startTime}</td>
+						<td>${item.endTime}</td>
+						<td>${item.distanceTimes}</td>
+						<td>${item.comments}</td>
+					</tr>
+					</#list>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td rowspan="2" style="border-right: 1px solid #95B8E7; font-weight: bold;">归档</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">复印存档份数：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">交件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">接件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">日期：</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">原件存档份数：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">交件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">接件人：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">日期：</td>
+		</tr>
+		<tr>
+			<td style="border-right: 1px solid #95B8E7; font-weight: bold;">送达情况</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">财务部：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">签约日期：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">合同部门：</td>
+			<td colspan="2" style="border-left: 1px solid #95B8E7;">签收日期：</td>
+		</tr>
+	</table>
+</body>
+</html>
